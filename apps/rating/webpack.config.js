@@ -1,5 +1,6 @@
 const { composePlugins, withNx } = require('@nrwl/webpack');
 const { withReact } = require('@nrwl/react');
+var path = require('path');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 const deps = require('../../package.json').dependencies;
 
@@ -14,6 +15,7 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
 config.output =  {
   uniqueName: "rating",
   publicPath: "auto",
+  path:path.join(__dirname, "../../dist/apps/rating"),
   scriptType: 'text/javascript'
 }
 
