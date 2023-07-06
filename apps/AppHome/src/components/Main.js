@@ -1,13 +1,13 @@
-import React from 'react'
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
-import HomeMainPage from './HomeMainPage'
-import InsightDetail from './InsightDetail'
-import PurposeDetail from './PurposeDetail'
-import WhatsHotDetail from './whatsHotDetail'
+import React from 'react';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import HomeMainPage from './HomeMainPage';
+import InsightDetail from './InsightDetail';
+import PurposeDetail from './PurposeDetail';
+import WhatsHotDetail from './whatsHotDetail';
 
 export default function Main() {
-  let object = useLocation()
-  console.log(object)
+  let object = useLocation();
+  console.log(object);
   return (
     <div style={{ backgroundColor: '#f8f9fa' }}>
       <Routes>
@@ -20,5 +20,5 @@ export default function Main() {
         </Route>
       </Routes>
     </div>
-  )
+  );
 }

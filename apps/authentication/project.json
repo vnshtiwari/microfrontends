@@ -53,7 +53,7 @@
       "options": {
         "buildTarget": "authentication:build",
         "hmr": true,
-        "port":4605
+        "port": 4605
       },
       "configurations": {
         "development": {

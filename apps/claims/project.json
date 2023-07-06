@@ -50,7 +50,7 @@
       "options": {
         "buildTarget": "claims:build",
         "hmr": true,
-        "port":4802
+        "port": 4802
       },
       "configurations": {
         "development": {

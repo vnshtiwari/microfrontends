@@ -1,25 +1,23 @@
-import Card7 from '../assets/card-7.jpg'
-import Card8 from '../assets/card-8.png'
-import '../styles/whatsHot.css'
-import { useNavigate } from 'react-router-dom'
+import Card7 from '../assets/card-7.jpg';
+import Card8 from '../assets/card-8.png';
+import '../styles/whatsHot.css';
+import { useNavigate } from 'react-router-dom';
 
 const whatsHot = () => {
   const hotList = [
     {
       id: 1,
       name: 'Our health and  wellbeing services',
-      desc:
-        "Pulse by Prudential, our health and wellbeing super-app, is transforming our business. Now available in 17 markets and 11 languages across Asia and Africa, Pulse has rapidly become one of Asia's most popular health ecosystems",
+      desc: "Pulse by Prudential, our health and wellbeing super-app, is transforming our business. Now available in 17 markets and 11 languages across Asia and Africa, Pulse has rapidly become one of Asia's most popular health ecosystems",
       image: Card7,
     },
     {
       id: 2,
       name: 'Prudence Foundation',
-      desc:
-        "Prudence Foundation's strategy is focused around health and resilience issues relevant to the communities in which we operate, education, particularly financial education, and building resilience across communities.",
+      desc: "Prudence Foundation's strategy is focused around health and resilience issues relevant to the communities in which we operate, education, particularly financial education, and building resilience across communities.",
       image: Card8,
     },
-  ]
+  ];
   return (
     <div className="mainContainer">
       <p className="title">
@@ -31,11 +29,11 @@ const whatsHot = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Card = ({ data }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="cardMainContainer">
       <div className="cardInnerContainer">
@@ -62,7 +60,7 @@ const Card = ({ data }) => {
       </div>
       <button
         onClick={() => {
-          navigate(`/home/hotsDetail/${data.id}`)
+          navigate(`/home/hotsDetail/${data.id}`);
         }}
         style={{
           backgroundColor: '#ed1b2e',
@@ -85,6 +83,6 @@ const Card = ({ data }) => {
         </span>
       </button>
     </div>
-  )
-}
-export default whatsHot
+  );
+};
+export default whatsHot;

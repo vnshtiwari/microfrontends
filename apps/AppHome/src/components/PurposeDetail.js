@@ -1,5 +1,5 @@
-import '../styles/purposeDetail.css'
-import girlComputer from '../assets/girlWithComputer.jpg'
+import '../styles/purposeDetail.css';
+import girlComputer from '../assets/girlWithComputer.jpg';
 
 const PurposeDetail = () => {
   return (
@@ -26,7 +26,7 @@ const PurposeDetail = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PurposeDetail
+export default PurposeDetail;

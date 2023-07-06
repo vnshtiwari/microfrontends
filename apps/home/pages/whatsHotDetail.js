@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const WhatsHotDetail = () => {
   const detail = [
@@ -6,19 +6,17 @@ const WhatsHotDetail = () => {
       id: 1,
       name: 'HEALTH AND WELLBEING',
       title: 'Our health and wellbeing services',
-      desc:
-        " Pulse by Prudential, our health and wellbeing super-app, is transforming our business. Now available in 17 markets and 11 languages across Asia and Africa, Pulse has rapidly become one of Asia's most popular health ecosystems",
+      desc: " Pulse by Prudential, our health and wellbeing super-app, is transforming our business. Now available in 17 markets and 11 languages across Asia and Africa, Pulse has rapidly become one of Asia's most popular health ecosystems",
     },
     {
       id: 2,
       name: '',
       title: 'Prudence Foundation',
-      desc:
-        'Prudence Foundation’s strategy is focused around health and resilience issues relevant to the communities in which we operate, education, particularly financial education, and building resilience across communities.',
+      desc: 'Prudence Foundation’s strategy is focused around health and resilience issues relevant to the communities in which we operate, education, particularly financial education, and building resilience across communities.',
     },
-  ]
-  var id = 1 
-  const data = detail[id - 1]
+  ];
+  var id = 1;
+  const data = detail[id - 1];
   return (
     <div
       style={{
@@ -34,7 +32,7 @@ const WhatsHotDetail = () => {
       <p style={{ fontSize: '30px' }}>{data.title}</p>
       <p>{data.desc}</p>
     </div>
-  )
-}
+  );
+};
 
-export default WhatsHotDetail
+export default WhatsHotDetail;

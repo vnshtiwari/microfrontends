@@ -7,12 +7,11 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 
-export default function Product({nextCallback,setPlanList}) {
+export default function Product({ nextCallback, setPlanList }) {
   let [contactData, setContactData] = useState({});
 
   let [error, setError] = useState({});
-  let [selectedProduct, setSelctedProduct] = useState("Health AdvantEdge");
-
+  let [selectedProduct, setSelctedProduct] = useState('Health AdvantEdge');
 
   let [products, setProdcuts] = useState([
     {
@@ -60,8 +59,8 @@ export default function Product({nextCallback,setPlanList}) {
     );
     const content = await rawResponse.json();
     //nextCallback();
-    setPlanList([...content.quote])
-    nextCallback()
+    setPlanList([...content.quote]);
+    nextCallback();
     //setLoader(false);
 
     //setPlan([...content.quote]);
@@ -85,7 +84,10 @@ export default function Product({nextCallback,setPlanList}) {
         <ul className={`${Style.planBenifits} no-bullets`}>
           {products.map((p) => {
             return (
-              <li className={selectedProduct === p.name ? 'active':'' } onClick={()=> setSelctedProduct(p.name)} >
+              <li
+                className={selectedProduct === p.name ? 'active' : ''}
+                onClick={() => setSelctedProduct(p.name)}
+              >
                 <h2>{p.name}</h2>
                 <p class="desk-para">{p.desc}</p>
                 <p class="mob-para">{p.detail}</p>

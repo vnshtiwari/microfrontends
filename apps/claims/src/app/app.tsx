@@ -9,7 +9,6 @@ export function App() {
       <Hospitalisation></Hospitalisation>
       <BankingInfo></BankingInfo>
       <UplodDocuments></UplodDocuments>
-
     </>
   );
 }

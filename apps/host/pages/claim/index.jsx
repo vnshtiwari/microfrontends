@@ -13,19 +13,16 @@ const UserAuthContextProvider = dynamic(
   { ssr: false }
 );
 
-
 const Claims = dynamic(() => import('claim/Claims'), {
   ssr: false,
 });
 
 export default function Index() {
   return (
-
     <UserAuthContextProvider>
-    <ProtectedRoute>
-    <Claims
-      ></Claims>    </ProtectedRoute>
-</UserAuthContextProvider>
-
+      <ProtectedRoute>
+        <Claims></Claims>{' '}
+      </ProtectedRoute>
+    </UserAuthContextProvider>
   );
 }

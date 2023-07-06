@@ -8,9 +8,6 @@ const Main = dynamic(
   { ssr: true }
 );
 
-
 export default function Products() {
-  return (
-          <Main />
-  );
+  return <Main />;
 }

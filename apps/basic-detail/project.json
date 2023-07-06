@@ -53,7 +53,7 @@
       "options": {
         "buildTarget": "basic-detail:build",
         "hmr": true,
-        "port":4501
+        "port": 4501
       },
       "configurations": {
         "development": {

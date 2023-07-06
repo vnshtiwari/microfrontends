@@ -13,7 +13,6 @@ module.exports = {
           './index': './pages/index.tsx',
           './Main': './pages/HomeMainPage.js',
           './PurposeDetail': './pages/PurposeDetail.js',
-
         },
         extraOptions: {
           automaticAsyncBoundary: true,

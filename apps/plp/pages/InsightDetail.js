@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const InsightDetail = () => {
   return (
@@ -26,7 +26,7 @@ const InsightDetail = () => {
         information and contact details for this business.
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default InsightDetail
+export default InsightDetail;

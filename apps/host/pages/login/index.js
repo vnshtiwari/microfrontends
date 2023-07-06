@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import { lazy } from 'react';
-import Nav from '../../components/Counter'
+import Nav from '../../components/Counter';
 // import Underwriting from 'underwriting/App'
 // const Underwriting = lazy(() => import('underwriting/App'));
 
@@ -17,9 +17,6 @@ const Login = dynamic(
   { suspense: true, ssr: false }
 );
 
-
-  export default function Products() {
-    return (
-      <Login/>
-    );
-  }
+export default function Products() {
+  return <Login />;
+}

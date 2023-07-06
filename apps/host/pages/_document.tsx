@@ -8,8 +8,7 @@ import Document, {
   DocumentInitialProps,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import Script from 'next/script'
-
+import Script from 'next/script';
 
 export default class CustomDocument extends Document {
   static async getInitialProps(
@@ -34,13 +33,10 @@ export default class CustomDocument extends Document {
   render() {
     return (
       <Html>
-        
-        <Head>
-          {this.props.styles}</Head>
+        <Head>{this.props.styles}</Head>
         <body>
           <Main />
           <NextScript />
-
         </body>
       </Html>
     );

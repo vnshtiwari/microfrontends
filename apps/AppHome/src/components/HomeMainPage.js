@@ -1,10 +1,10 @@
-import React from 'react'
-import InsuranceForLife from './InsuranceForLife'
-import YourGoal from './yourGoal'
-import WhatsHot from './whatsHot'
-import PersonalizedInsight from './personalizedInsight'
-import OurPurpose from './OurPurpose'
-import '../styles/HomeMainPage.css'
+import React from 'react';
+import InsuranceForLife from './InsuranceForLife';
+import YourGoal from './yourGoal';
+import WhatsHot from './whatsHot';
+import PersonalizedInsight from './personalizedInsight';
+import OurPurpose from './OurPurpose';
+import '../styles/HomeMainPage.css';
 
 export default function HomeMainPage() {
   return (
@@ -17,5 +17,5 @@ export default function HomeMainPage() {
       <WhatsHot />
       <PersonalizedInsight />
     </div>
-  )
+  );
 }

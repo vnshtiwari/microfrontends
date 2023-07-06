@@ -8,6 +8,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-    <App nextCallback={()=>{ return ;}}/>
+    <App
+      nextCallback={() => {
+        return;
+      }}
+    />
   </StrictMode>
 );

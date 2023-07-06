@@ -1,14 +1,12 @@
 const { composePlugins, withNx } = require('@nrwl/webpack');
 const { withReact } = require('@nrwl/react');
 const { withModuleFederation } = require('@nrwl/react/module-federation');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const ModuleFederationPlugin =
+  require('webpack').container.ModuleFederationPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const deps = require('../../package.json').dependencies;
 
-
-
 const { merge } = require('webpack-merge');
-
 
 const baseConfig = require('./module-federation.config');
 
@@ -24,9 +22,10 @@ module.exports = composePlugins(
   (config) => {
     // Further customize webpack config
     config.output = {
-      uniqueName: "products",
-      publicPath: "auto",
-      scriptType: 'text/javascript'
-    }
+      uniqueName: 'products',
+      publicPath: 'auto',
+      scriptType: 'text/javascript',
+    };
     return config;
-  });
+  }
+);

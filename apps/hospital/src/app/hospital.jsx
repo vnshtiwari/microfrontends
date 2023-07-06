@@ -1,18 +1,24 @@
+import '../styles/hospital.css';
 
 import { useState } from 'react';
+
 import hospitalData from '../data/hospitalData';
-import '../styles/hospital.css'
 import { mobileCheck } from '../utility/common';
 
 const Movies = () => {
   let [hospital, setHospital] = useState(hospitalData);
-  const [search, setSearch] = useState(null)
+  const [search, setSearch] = useState(null);
 
   return (
     <div id="root">
       <div class="quotes_main_container ">
-        <div 
-        class={mobileCheck() ?"features_popup_mobile is-hidden-desktop-custom" : "modal is-active is-hidden-mobile is-hidden-tablet-only-custom-custom fullscreen_popup_desktop"}        >
+        <div
+          class={
+            mobileCheck()
+              ? 'features_popup_mobile is-hidden-desktop-custom'
+              : 'modal is-active is-hidden-mobile is-hidden-tablet-only-custom-custom fullscreen_popup_desktop'
+          }
+        >
           <div
             class="fullscreen_popup_desktop_wrapper"
             id="feature_desktop_container"
@@ -36,7 +42,9 @@ const Movies = () => {
                                   type="text"
                                   placeholder="Search hospital by name or pincode "
                                   value={search}
-                                  onChange={(e)=> setSearch(e.currentTarget.value)}
+                                  onChange={(e) =>
+                                    setSearch(e.currentTarget.value)
+                                  }
                                 />
                                 <p class="searchIcon"></p>
                               </div>
@@ -44,20 +52,28 @@ const Movies = () => {
                           </div>
                         </div>
                         <ul class="features_hosp_list">
-                          {hospital.filter(item=> {
-                            return search==null || item.hospitalName.toLowerCase().includes(search.toLowerCase())  ||  item.hospitalPinCode.includes(search)
-                        }).map((item) => {
-                            return (
-                              <li>
-                                <span class="hosp_city_name1">
-                                  {item.hospitalName}
-                                </span>
-                                <span class="hosp_city_name">
-                                  {item.primaryAddress}
-                                </span>
-                              </li>
-                            );
-                          })}
+                          {hospital
+                            .filter((item) => {
+                              return (
+                                search == null ||
+                                item.hospitalName
+                                  .toLowerCase()
+                                  .includes(search.toLowerCase()) ||
+                                item.hospitalPinCode.includes(search)
+                              );
+                            })
+                            .map((item, index) => {
+                              return (
+                                <li key={index}>
+                                  <span class="hosp_city_name1">
+                                    {item.hospitalName}
+                                  </span>
+                                  <span class="hosp_city_name">
+                                    {item.primaryAddress}
+                                  </span>
+                                </li>
+                              );
+                            })}
                         </ul>
                       </div>
                     </div>

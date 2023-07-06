@@ -12,5 +12,4 @@ export function Index({ message }) {
   );
 }
 
-
 export default Index;

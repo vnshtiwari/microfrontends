@@ -1,16 +1,13 @@
-import { React, useEffect, useState } from "react";
+import './ekyc.scss';
+import './home.css';
 
-import CircularProgress from "@mui/material/CircularProgress";
-import "./ekyc.scss";
-import "./home.css";
+import { React, useEffect, useState } from 'react';
+
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Payment({
+  nextCallback,
   // ekycData,
-  // setEkycData,
-  // error,
-  // validate,
-  amount=10000,
-  // setErrMsg,
 }) {
   function loadPayment() {
     addPaytmScript(onScriptLoad);
@@ -19,33 +16,35 @@ export default function Payment({
   function onScriptLoad() {
     // document.querySelector(".order-details").style.display = "none";
     var config = {
-      root: "#checkout",
-      flow: "DEFAULT",
+      root: '#checkout',
+      flow: 'DEFAULT',
       data: {
-        orderId: "sahi-" + sessionStorage.getItem("proposalId"),
-        token: localStorage.getItem("txnToken") /* update token value */,
-        tokenType: "TXN_TOKEN",
-        amount: amount /* update amount */,
+        orderId: 'sahi-' + sessionStorage.getItem('orderId'),
+        token: sessionStorage.getItem('txnToken') /* update token value */,
+        tokenType: 'TXN_TOKEN',
+        amount: parseInt(sessionStorage.getItem('amount')) /* update amount */,
       },
       merchant: {
         redirect: false,
       },
       handler: {
         notifyMerchant: function (eventName, data) {
-          console.log("notifyMerchant handler function called");
-          console.log("eventName => ", eventName);
-          console.log("data => ", data);
+          console.log('notifyMerchant handler function called');
+          console.log('eventName => ', eventName);
+          console.log('data => ', data);
         },
         transactionStatus: function (paymentStatus) {
-          localStorage.setItem("paymentStatus", JSON.stringify(paymentStatus));
-          const messageEl = document.querySelector(".message");
+          sessionStorage.setItem(
+            'paymentStatus',
+            JSON.stringify(paymentStatus)
+          );
+          const messageEl = document.querySelector('.message');
           const messageNode = document.createTextNode(paymentStatus.RESPMSG);
-          if (paymentStatus.STATUS == "TXN_SUCCESS") {
+          if (paymentStatus.STATUS == 'TXN_SUCCESS') {
             //messageEl.style.display = "none";
             //paytmScript.parentNode.removeChild(paytmScript);
             //gtag("event", "payment_done");
-
-            //navigate("../insuranceQuestionnaire");
+            nextCallback();
           } else {
             //setErrMsg(paymentStatus);
           }
@@ -64,17 +63,17 @@ export default function Payment({
             setLoader(false);
           })
           .catch(function onError(error) {
-            console.log("error => ", error);
+            console.log('error => ', error);
           });
       });
     }
   }
 
   function addPaytmScript(callback) {
-    var s = document.createElement("script");
+    var s = document.createElement('script');
     s.setAttribute(
-      "src",
-      "https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/NaSqWx02851401972121.js"
+      'src',
+      'https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/NaSqWx02851401972121.js'
     );
     s.onload = callback;
     document.body.appendChild(s);
@@ -87,25 +86,25 @@ export default function Payment({
     const orderId = `PYTM_SAHI_${randNum}`;
     const textNode = document.createTextNode(orderId);
     // document.getElementById("orderId").appendChild(textNode);
-    localStorage.setItem("orderId", orderId);
+    sessionStorage.setItem('orderId', orderId);
 
     fetch(
-      "https://sahi-backend-dnhiaxv6nq-el.a.run.app/api/v1/sahi/payment/initiate",
+      'https://sahi-backend-dnhiaxv6nq-el.a.run.app/api/v1/sahi/payment/initiate',
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          orderId: "sahi-" + sessionStorage.getItem("proposalId"),
-          customerId: sessionStorage.getItem("customerId"),
-          amount: amount,
+          orderId: 'sahi-' + sessionStorage.getItem('orderId'),
+          customerId: 441,
+          amount: parseInt(sessionStorage.getItem('amount')),
         }),
       }
     )
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem("txnToken", data.result.body.txnToken);
+        sessionStorage.setItem('txnToken', data.result.body.txnToken);
         handleClickOpen();
         loadPayment();
       })
@@ -137,12 +136,12 @@ export default function Payment({
   return (
     <section class="chat-container">
       <CircularProgress
-        sx={{ display: isLoader ? "block" : "none" }}
+        sx={{ display: isLoader ? 'block' : 'none' }}
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          color: "#ed1b2e",
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          color: '#ed1b2e',
         }}
       />
       <span>

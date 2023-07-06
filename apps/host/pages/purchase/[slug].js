@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import dynamic from 'next/dynamic';
 import Router, { useRouter } from 'next/router';
-import { useState } from 'react';
 
 const BasicDetails = dynamic(() => import('basicDetails/App'), {
   ssr: false,
@@ -60,7 +61,6 @@ export default function Products() {
 
   return (
     <>
-
       {router.query.slug == 'basicdetails' && (
         <BasicDetails
           nextCallback={(basicDetails) => {
@@ -142,7 +142,7 @@ export default function Products() {
           }}
           basicData={basicData}
           insParty={state}
-          ></Proposal>
+        ></Proposal>
       )}
 
       {router.query.slug == 'payment' && (
@@ -150,9 +150,9 @@ export default function Products() {
           nextCallback={() => {
             Router.push(
               {
-                pathname: '/purchase/payment',
+                pathname: '/purchase/underwriting',
               },
-              '/purchase/payment'
+              '/purchase/underwriting'
             );
           }}
         ></Payment>

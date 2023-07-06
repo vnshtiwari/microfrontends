@@ -24,7 +24,7 @@ export function BankingInfo() {
           </div>
         </Grid>
         <Grid item xs={6}>
-        <div className="mt-30 form-field">
+          <div className="mt-30 form-field">
             <TextField
               required
               fullWidth
@@ -63,7 +63,10 @@ export function BankingInfo() {
         </Grid>
       </Grid>
 
-      <div className='mt-30'> <input className='save-next' type='button' value='Save and Next'/> </div>
+      <div className="mt-30">
+        {' '}
+        <input className="save-next" type="button" value="Save and Next" />{' '}
+      </div>
     </div>
   );
 }

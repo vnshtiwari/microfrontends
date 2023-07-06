@@ -50,8 +50,7 @@
       "options": {
         "buildTarget": "feedback:build",
         "hmr": true,
-        "port":4602
-    
+        "port": 4602
       },
       "configurations": {
         "development": {

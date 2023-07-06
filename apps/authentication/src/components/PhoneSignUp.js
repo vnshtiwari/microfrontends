@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
-import { useUserAuth } from "../context/UserAuthContext";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Form, Alert } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
+import { useUserAuth } from '../context/UserAuthContext';
 
 const PhoneSignUp = () => {
-  const [error, setError] = useState("");
-  const [number, setNumber] = useState("");
+  const [error, setError] = useState('');
+  const [number, setNumber] = useState('');
   const [flag, setFlag] = useState(false);
-  const [otp, setOtp] = useState("");
-  const [result, setResult] = useState("");
+  const [otp, setOtp] = useState('');
+  const [result, setResult] = useState('');
   const { setUpRecaptha } = useUserAuth();
   const navigate = useNavigate();
 
   const getOtp = async (e) => {
     e.preventDefault();
     console.log(number);
-    setError("");
-    if (number === "" || number === undefined)
-      return setError("Please enter a valid phone number!");
+    setError('');
+    if (number === '' || number === undefined)
+      return setError('Please enter a valid phone number!');
     try {
       const response = await setUpRecaptha(number);
       setResult(response);
@@ -32,12 +32,12 @@ const PhoneSignUp = () => {
 
   const verifyOtp = async (e) => {
     e.preventDefault();
-    setError("");
-    if (otp === "" || otp === null) return;
+    setError('');
+    if (otp === '' || otp === null) return;
     try {
       let res = await result.confirm(otp);
-      console.log(res.user)
-      navigate("/home");
+      console.log(res.user);
+      navigate('/home');
     } catch (err) {
       setError(err.message);
     }
@@ -48,7 +48,7 @@ const PhoneSignUp = () => {
       <div className="p-4 box">
         <h2 className="mb-3">Firebase Phone Auth</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={getOtp} style={{ display: !flag ? "block" : "none" }}>
+        <Form onSubmit={getOtp} style={{ display: !flag ? 'block' : 'none' }}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <PhoneInput
               defaultCountry="IN"
@@ -69,7 +69,7 @@ const PhoneSignUp = () => {
           </div>
         </Form>
 
-        <Form onSubmit={verifyOtp} style={{ display: flag ? "block" : "none" }}>
+        <Form onSubmit={verifyOtp} style={{ display: flag ? 'block' : 'none' }}>
           <Form.Group className="mb-3" controlId="formBasicOtp">
             <Form.Control
               type="otp"

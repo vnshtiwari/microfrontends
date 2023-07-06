@@ -1,93 +1,90 @@
 .mainContainer {
-    background-color: #ed1b2e;
-    color: white;
-    padding: 30px;
-
+  background-color: #ed1b2e;
+  color: white;
+  padding: 30px;
 }
 
 .prodcutHeading {
-    width: 70%;
+  width: 70%;
 }
 .prodcutHeading li {
-    padding: 10px;
+  padding: 10px;
 }
 .prodcutHeading h1 {
 }
 
 .planBenifits {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .productBody {
-    width: 70%;
-    color: black;
-    background-color: white;
-    border-radius: 10px;
-    padding: 15px;
-
+  width: 70%;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
 }
 
 .productBody li {
-    padding: 15px;
-    border-right:  solid 1px #eaeaea;
-    cursor: pointer;
+  padding: 15px;
+  border-right: solid 1px #eaeaea;
+  cursor: pointer;
 }
 
 .productBody li:last-child {
-    border-right:  0px
+  border-right: 0px;
 }
 
 .productBody li p {
-color: grey;
+  color: grey;
 }
 
-
-.fullwidth{
-    width: 100%;
+.fullwidth {
+  width: 100%;
 }
 
-.contactFormContainer{
-    width: 350px;
+.contactFormContainer {
+  width: 350px;
 }
 
-.genderList{
-    display: flex;
-    justify-content: space-around;
+.genderList {
+  display: flex;
+  justify-content: space-around;
 }
-.genderList svg{
-    width:40px;
-    height: 40px;
-}
-
-.genderList p{
-    font-size: 14px;
-    text-align: center;
-}
-.genderList div{
-    cursor: pointer;
+.genderList svg {
+  width: 40px;
+  height: 40px;
 }
 
-.active{
-    color:#ed1b2e;
+.genderList p {
+  font-size: 14px;
+  text-align: center;
 }
-.basicDetailContainer{
-    width: 350px;
+.genderList div {
+  cursor: pointer;
 }
 
-.quoteForm{
-    display: flex;
-    justify-content: space-between;
+.active {
+  color: #ed1b2e;
+}
+.basicDetailContainer {
+  width: 350px;
+}
+
+.quoteForm {
+  display: flex;
+  justify-content: space-between;
 }
 .inputContainer {
-    width: 25%;
-    padding-left: 10px;
-    padding-right: 10px;
-
+  width: 25%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-@media screen and  (max-width : 370px) {
-    .contactFormContainer, .basicDetailContainer{
-        width: 100%;
-    }
+@media screen and (max-width: 370px) {
+  .contactFormContainer,
+  .basicDetailContainer {
+    width: 100%;
+  }
 }

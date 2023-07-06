@@ -1,39 +1,37 @@
-.containerList{
-	display: flex;
-	flex-wrap: wrap;
-
+.containerList {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.wrapper{
-	width: 60%;
-	padding: 10px;
-	border-radius: 10px;
-	padding: 10px;
-
+.wrapper {
+  width: 60%;
+  padding: 10px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.containerHosp{
-	width: 50%;
-	border-bottom: 1px grey solid;
+.containerHosp {
+  width: 50%;
+  border-bottom: 1px grey solid;
 }
 
 .centerhr {
-	margin-left: auto;
-	margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .searchHospital {
-	display: flex;
+  display: flex;
 }
 
-.submit-wrap{
-	width: 50%;
+.submit-wrap {
+  width: 50%;
 }
 
-.serachBox{
-	width: 50%;
+.serachBox {
+  width: 50%;
 }
 
-.mt-30{
-	margin-top: 30px;
+.mt-30 {
+  margin-top: 30px;
 }

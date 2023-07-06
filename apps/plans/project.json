@@ -50,7 +50,7 @@
       "options": {
         "buildTarget": "plans:build",
         "hmr": true,
-        "port":4502
+        "port": 4502
       },
       "configurations": {
         "development": {

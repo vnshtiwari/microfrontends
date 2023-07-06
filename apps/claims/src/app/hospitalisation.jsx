@@ -38,7 +38,6 @@ export function Hospitalisation() {
                 label="Category of Claim"
                 onChange={handleChange}
                 size="small"
-
               >
                 <MenuItem value={'Daycare'}>Daycare</MenuItem>
                 <MenuItem value={'Hospitalization'}>Hospitalization</MenuItem>
@@ -230,7 +229,10 @@ export function Hospitalisation() {
         </Grid>
       </Grid>
 
-      <div className='mt-30'> <input className='save-next' type='button' value='Save and Next'/> </div>
+      <div className="mt-30">
+        {' '}
+        <input className="save-next" type="button" value="Save and Next" />{' '}
+      </div>
     </div>
   );
 }

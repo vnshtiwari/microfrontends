@@ -4,10 +4,7 @@ const ProtectedRoute = dynamic(
   { ssr: false }
 );
 const useUserAuth = dynamic(
-  () =>
-    import('authentication/UserAuthContext').then(
-      (mod) => mod.useUserAuth
-    ),
+  () => import('authentication/UserAuthContext').then((mod) => mod.useUserAuth),
   { ssr: false }
 );
 
@@ -19,10 +16,6 @@ const UserAuthContextProvider = dynamic(
   { ssr: false }
 );
 
-
-
-
-
 const User = dynamic(
   () => {
     // @ts-expect-error TODO: support types for importing MF
@@ -31,16 +24,15 @@ const User = dynamic(
   { ssr: false }
 );
 
-
 export default function Products() {
   // const { user } = useUserAuth();
   // console.log(user)
 
   return (
     <UserAuthContextProvider>
-        <ProtectedRoute>
-          <User />
-        </ProtectedRoute>
+      <ProtectedRoute>
+        <User />
+      </ProtectedRoute>
     </UserAuthContextProvider>
   );
 }

@@ -8,8 +8,7 @@ const Products = dynamic(() => import('product/Products'), {
 export default function Index() {
   return (
     <>
-      <Products
-      ></Products>
+      <Products></Products>
     </>
   );
 }

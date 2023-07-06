@@ -27,7 +27,6 @@ const HospitalCard = ({ hospital }) => {
       <Typography> {hospital.hospitalCategory} </Typography>
       <Typography> {hospital.hospitalStdCode} </Typography>
       <Typography> {hospital.hospitalPhoneNo} </Typography>
-
     </div>
   );
 };

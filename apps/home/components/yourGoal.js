@@ -41,7 +41,7 @@ const YourGoal = () => {
         affiliated with Prudential UK and Europe (Prudential Assurance Company
         Ltd), as this business became part of M&G plc in October 2019. Customers
         and advisers of Prudential UK and Europe should visit www.pru.co.uk for
-        information and contact details for this business. 
+        information and contact details for this business.
       </p>
       <div style={{ display: 'flex', overflow: 'auto' }}>
         {goalList.map((data) => (
@@ -53,8 +53,6 @@ const YourGoal = () => {
 };
 
 const Card = ({ data }) => {
-
-
   return (
     <div className="cardMainContainer">
       <div className="cardInnerContainer">
@@ -67,11 +65,7 @@ const Card = ({ data }) => {
         <p className="cardName">{data.name}</p>
         <p className="cardDesc">{data.desc}</p>
       </div>
-      <button
-      href="/home/insightDetail"
-
-        className="dotContainer"
-      >
+      <button href="/home/insightDetail" className="dotContainer">
         <div className="arrow">&#62;</div>
       </button>
     </div>

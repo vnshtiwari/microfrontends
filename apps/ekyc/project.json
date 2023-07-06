@@ -50,7 +50,7 @@
       "options": {
         "buildTarget": "ekyc:build",
         "hmr": true,
-        "port":4506
+        "port": 4506
       },
       "configurations": {
         "development": {

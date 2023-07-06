@@ -1,6 +1,6 @@
 module.exports = {
   name: 'products',
   exposes: {
-    './Module': './src/app/app'
+    './Module': './src/app/app',
   },
 };

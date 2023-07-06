@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import '../styles/plan.css';
 import data from './data';
 
-export default function Plan({nextCallback}) {
+export default function Plan({ nextCallback }) {
   const [planData, setPlanData] = useState([]);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -261,7 +261,7 @@ export default function Plan({nextCallback}) {
   ];
   useEffect(() => {
     const search = new URLSearchParams(window.location.search);
-    console.log(search.get('PlanId'))
+    console.log(search.get('PlanId'));
 
     let arr = data.filter((item) => {
       return item.PlanId == search.get('PlanId');
@@ -269,6 +269,15 @@ export default function Plan({nextCallback}) {
     setPlanData([...arr]);
     setSelectProduct(0);
   }, []);
+
+  useEffect(() => {
+    debugger;
+    if (selectProduct != null)
+      window.sessionStorage.setItem(
+        'amount',
+        planData[selectProduct].PlanDetail[year - 1].Premium + riderAmount
+      );
+  }, [selectProduct, riderAmount]);
 
   function selectRider(rider) {
     let index = selectedRider.indexOf(rider.AddOnPlanName);
@@ -332,6 +341,7 @@ export default function Plan({nextCallback}) {
                             return (
                               <li
                                 id={`sum${planData[selectProduct].SumInsured}`}
+                                key={index}
                                 onClick={(e) => {
                                   console.log(index);
                                   setSelectProduct(index);
@@ -367,6 +377,7 @@ export default function Plan({nextCallback}) {
                 {planData[selectProduct].PlanDetail.map((item, index) => {
                   return (
                     <div
+                      key={index}
                       onClick={() => {
                         setYear(index + 1);
                       }}
@@ -405,9 +416,9 @@ export default function Plan({nextCallback}) {
                   current plan
                 </span>
               </h3>
-              {riders.map((item) => {
+              {riders.map((item, index) => {
                 return (
-                  <div class="rider-box ">
+                  <div class="rider-box " key={index}>
                     <div class="flexRow row sp-rider dailyAllowanceRider">
                       <div>
                         <h3>
@@ -424,7 +435,13 @@ export default function Plan({nextCallback}) {
                         <div class="addon-box1">
                           <div class="si_add"></div>
                         </div>
-                        <button class={selectedRider.includes(item.AddOnPlanName) ? "active-button":""}>
+                        <button
+                          class={
+                            selectedRider.includes(item.AddOnPlanName)
+                              ? 'active-button'
+                              : ''
+                          }
+                        >
                           ₹{item.AddOnTermPremiums[year - 1].Premium}
                         </button>
                       </div>
@@ -478,11 +495,18 @@ export default function Plan({nextCallback}) {
                 <div>Total premium</div>
                 <div>
                   {' '}
-                  <span>₹                 {planData[selectProduct].PlanDetail[year - 1].Premium +
-                  riderAmount}</span>
+                  <span>
+                    ₹{' '}
+                    {planData[selectProduct].PlanDetail[year - 1].Premium +
+                      riderAmount}
+                  </span>
                 </div>
               </div>
-              <button type="button" onClick={()=> nextCallback()} class="primaryMainCta">
+              <button
+                type="button"
+                onClick={() => nextCallback()}
+                class="primaryMainCta"
+              >
                 Proceed
               </button>
             </div>
@@ -504,8 +528,12 @@ export default function Plan({nextCallback}) {
               <div class="break_modal_icon">
                 <div>
                   {' '}
-                  <strong>₹                 {planData[selectProduct].PlanDetail[year - 1].Premium +
-                  riderAmount}/-</strong>
+                  <strong>
+                    ₹{' '}
+                    {planData[selectProduct].PlanDetail[year - 1].Premium +
+                      riderAmount}
+                    /-
+                  </strong>
                 </div>
                 <div
                   onClick={() => {
@@ -515,7 +543,9 @@ export default function Plan({nextCallback}) {
                 ></div>
               </div>
             </div>
-            <button class="primaryMainCta" onClick={()=> nextCallback()}>Proceed</button>
+            <button class="primaryMainCta" onClick={() => nextCallback()}>
+              Proceed
+            </button>
           </div>
         </div>
         {isOverlayOpen && (
@@ -554,9 +584,11 @@ export default function Plan({nextCallback}) {
                 <div class="riders_pr">
                   <div class="riders_box_pr">
                     <div>Base Premium - {year} year</div>
-                    <div class="bold">₹                ₹
-                {planData[selectProduct].PlanDetail[year - 1].Premium +
-                  riderAmount}</div>
+                    <div class="bold">
+                      ₹ ₹
+                      {planData[selectProduct].PlanDetail[year - 1].Premium +
+                        riderAmount}
+                    </div>
                   </div>
                 </div>
                 <div class="riders_pr"></div>
@@ -575,7 +607,9 @@ export default function Plan({nextCallback}) {
               </div>
             </div>
             <div>
-              <button class="primaryMainCta" onClick={()=> nextCallback()}>Proceed</button>
+              <button class="primaryMainCta" onClick={() => nextCallback()}>
+                Proceed
+              </button>
             </div>
           </div>
         )}

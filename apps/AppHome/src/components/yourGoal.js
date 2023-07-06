@@ -1,10 +1,10 @@
-import Card1 from '../assets/card-1.jpg'
-import Card2 from '../assets/card-2.jpg'
-import Card3 from '../assets/card-3.jpg'
-import Card4 from '../assets/card-4.jpg'
-import { useNavigate } from 'react-router-dom'
+import Card1 from '../assets/card-1.jpg';
+import Card2 from '../assets/card-2.jpg';
+import Card3 from '../assets/card-3.jpg';
+import Card4 from '../assets/card-4.jpg';
+import { useNavigate } from 'react-router-dom';
 
-import '../styles/yourGoal.css'
+import '../styles/yourGoal.css';
 
 const YourGoal = () => {
   const goalList = [
@@ -26,7 +26,7 @@ const YourGoal = () => {
       desc: 'How we make a difference through Responsible Investing',
       image: Card3,
     },
-  ]
+  ];
   return (
     <div className="mainGoalContainer">
       <p className="title">
@@ -50,11 +50,11 @@ const YourGoal = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Card = ({ data }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="cardMainContainer">
       <div className="cardInnerContainer">
@@ -64,13 +64,13 @@ const Card = ({ data }) => {
       </div>
       <button
         onClick={() => {
-          navigate('/home/insightDetail')
+          navigate('/home/insightDetail');
         }}
         className="dotContainer"
       >
         <div className="arrow">&#62;</div>
       </button>
     </div>
-  )
-}
-export default YourGoal
+  );
+};
+export default YourGoal;

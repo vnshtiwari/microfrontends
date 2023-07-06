@@ -31,9 +31,7 @@ const NextBtn = (props) => {
 const OurPurpose = () => {
   return (
     <div className="purpose">
-      <div
-        style={{ display: 'flex', justifyContent: 'center', marginTop: -5 }}
-      >
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: -5 }}>
         <div style={{ width: '90%', textAlign: 'center' }}>
           <Slider prevArrow={<PreviousBtn />} nextArrow={<NextBtn />}>
             <Card

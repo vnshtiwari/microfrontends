@@ -6,19 +6,20 @@ const Quote = dynamic(() => import('basicDetails/Quote'), {
 });
 
 const Rating = dynamic(() => import('rating/Rating'), {
-    ssr: false,
-  });
-  
+  ssr: false,
+});
 
 export default function Index() {
-    const [isCompleted, setCompleted] = useState(false)
+  const [isCompleted, setCompleted] = useState(false);
   return (
     <>
-      {!isCompleted && <Quote
-        nextCallback={() => {
-          setCompleted(true)
-        }}
-      ></Quote>}
+      {!isCompleted && (
+        <Quote
+          nextCallback={() => {
+            setCompleted(true);
+          }}
+        ></Quote>
+      )}
       {isCompleted && <Rating></Rating>}
     </>
   );

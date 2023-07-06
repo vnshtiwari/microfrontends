@@ -1,31 +1,25 @@
-import { useEffect, useState, Suspense } from "react";
-import React from "react";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import FingerprintIcon from "@mui/icons-material/Fingerprint";
-import SendIcon from "@mui/icons-material/Send";
-import style from "./basic-info.module.css";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import CircularProgress from "@mui/material/CircularProgress";
+import { useEffect, useState, Suspense } from 'react';
+import React from 'react';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import FingerprintIcon from '@mui/icons-material/Fingerprint';
+import SendIcon from '@mui/icons-material/Send';
+import style from './basic-info.module.css';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import CircularProgress from '@mui/material/CircularProgress';
 
-import "./ekyc.scss";
-import "./home.css";
+import './ekyc.scss';
+import './home.css';
 
-export default function Ekyc({
-  basicData,
-  setBasicData,
-  nextCallback
-}) {
-
-
-let [ekycData , setEkycData] = useState({})
+export default function Ekyc({ basicData, setBasicData, nextCallback }) {
+  let [ekycData, setEkycData] = useState({});
 
   function next() {
-    nextCallback()
+    nextCallback();
   }
   const [open, setOpen] = useState(false);
 
@@ -33,14 +27,14 @@ let [ekycData , setEkycData] = useState({})
     //setLoader(true);
     var data = new FormData();
 
-    data.append("front_part", e.target.files[0]);
+    data.append('front_part', e.target.files[0]);
 
     fetch(
       `https://sahi-backend-dnhiaxv6nq-el.a.run.app/api/v1/sahi/verify/kyc?customerId=${sessionStorage.getItem(
-        "customerId"
+        'customerId'
       )}`,
       {
-        method: "POST",
+        method: 'POST',
         body: data,
       }
     )
@@ -52,20 +46,20 @@ let [ekycData , setEkycData] = useState({})
 
         //setLoader(false);
         setEkycData({ ...ekycData });
-        if (res.result.data.id_type == "AADHAAR") {
+        if (res.result.data.id_type == 'AADHAAR') {
           let name = res.result.data.name;
-          basicData["firstName"] = name.substring(0, name.indexOf(" "));
-          basicData["lastName"] = name.substring(
-            name.indexOf(" ") + 1,
+          basicData['firstName'] = name.substring(0, name.indexOf(' '));
+          basicData['lastName'] = name.substring(
+            name.indexOf(' ') + 1,
             name.length
           );
-          basicData["dob"] = res.result.data.dob;
-          basicData["address"] = res.result.data.address;
+          basicData['dob'] = res.result.data.dob;
+          basicData['address'] = res.result.data.address;
           setBasicData({ ...basicData });
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error('Error:', error);
       });
   }
 
@@ -77,12 +71,12 @@ let [ekycData , setEkycData] = useState({})
   return (
     <section class="chat-container">
       <CircularProgress
-        sx={{ display: isLoader ? "block" : "none" }}
+        sx={{ display: isLoader ? 'block' : 'none' }}
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          color: "#ed1b2e",
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          color: '#ed1b2e',
         }}
       />
       <span>
@@ -104,15 +98,15 @@ let [ekycData , setEkycData] = useState({})
                   disabled
                   fullWidth
                   type="number"
-                  value={ekycData["aadharEkyc"]}
+                  value={ekycData['aadharEkyc']}
                   // onBlur={(e) => {
                   //   validate(2, "aadharEkyc");
                   // }}
                   inputProps={{
-                    autocomplete: "off",
+                    autocomplete: 'off',
                   }}
                   onChange={(e) => {
-                    ekycData["aadharEkyc"] = e.target.value.slice(0, 12);
+                    ekycData['aadharEkyc'] = e.target.value.slice(0, 12);
                     setEkycData({ ...ekycData });
                   }}
                   // error={error["aadharEkyc"] != null}
@@ -138,7 +132,7 @@ let [ekycData , setEkycData] = useState({})
                         <input
                           hidden
                           onChange={(e) => {
-                            fileUpload("aadharEkyc", e);
+                            fileUpload('aadharEkyc', e);
                             // setEkycData({ ...ekycData });
                           }}
                           accept="image/*,pdf;capture=camera"
@@ -209,7 +203,7 @@ let [ekycData , setEkycData] = useState({})
 
           <div class="submit-wrap align-center">
             <Button
-              disabled={!(ekycData["aadharEkyc"] != "")}
+              disabled={!(ekycData['aadharEkyc'] != '')}
               onClick={next}
               variant="contained"
               color="error"

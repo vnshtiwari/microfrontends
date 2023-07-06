@@ -1,14 +1,19 @@
-import { useEffect, useState } from 'react';
 import '../styles/quote/style/quote.css';
 import '../styles/quote/style/common.css';
+
+import { useEffect, useState } from 'react';
+
 import { mobileCheck } from '../utility/common';
 
 export default function Quote({ nextCallback }) {
   const [step, setStep] = useState(1);
-  const [member, setMember] = useState({});
-  const [city, setCity] = useState(null);
-  const [basicInfo, setbasicInfo] = useState({});
+  let memberData = JSON.parse(sessionStorage.getItem('member'));
+  let basicInfoData = JSON.parse(sessionStorage.getItem('basicinfo'));
+  let cityData = JSON.parse(sessionStorage.getItem('city'));
 
+  const [member, setMember] = useState({ ...memberData });
+  const [city, setCity] = useState(cityData);
+  const [basicInfo, setbasicInfo] = useState({ ...basicInfoData });
 
   const [option, setOption] = useState(null);
 
@@ -16,6 +21,12 @@ export default function Quote({ nextCallback }) {
     let str = JSON.stringify(member);
     sessionStorage.setItem('member', str);
   }, [member]);
+
+  // useEffect(() => {
+  //   debugger
+  //   let member = JSON.parse(sessionStorage.getItem('member'))
+  //   setMember({...member})
+  // }, []);
 
   function selectMember(item) {
     if (!member[item]) {
@@ -38,11 +49,14 @@ export default function Quote({ nextCallback }) {
     selectMember({ ...member });
   }
 
-  function ageOptions(){
-    let elem = []
-    for(let i=18; i<100;i++)
-    {
-      elem.push(<option value={i}>{i} Years</option>)
+  function ageOptions() {
+    let elem = [];
+    for (let i = 18; i < 100; i++) {
+      elem.push(
+        <option key={i} value={i}>
+          {i} Years
+        </option>
+      );
     }
     return elem;
   }
@@ -78,6 +92,7 @@ export default function Quote({ nextCallback }) {
                     {[1, 2, 3, 4].map((item) => {
                       return (
                         <li
+                          key={item}
                           className={`wizard-item  ${
                             step === item ? 'active' : ''
                           } ${step > item ? 'checked' : ''}`}
@@ -106,6 +121,7 @@ export default function Quote({ nextCallback }) {
                   ].map((item) => {
                     return (
                       <li
+                        key={item}
                         onClick={() => selectMember(item)}
                         class={`form-group ${member[item] ? 'selected' : ''}`}
                       >
@@ -156,17 +172,11 @@ export default function Quote({ nextCallback }) {
 
                 <span class="termCondition">
                   By clicking on “Continue”, you agree to our{' '}
-                  <a
-                    href=""
-                    target="_blank"
-                  >
+                  <a href="" target="_blank">
                     Privacy Policy
                   </a>{' '}
                   and{' '}
-                  <a
-                    href=""
-                    target="_blank"
-                  >
+                  <a href="" target="_blank">
                     Terms of use
                   </a>{' '}
                 </span>
@@ -177,35 +187,45 @@ export default function Quote({ nextCallback }) {
                 id="step_2"
               >
                 <ul class="member-info member-age-box">
-                  {Object.entries(member).map(item=> {
-                    return            item[0]=='Son' || item[0] == 'Daughter' ? item[1].map((sd ,index) => { 
-                      return <li class="fieldWrapper">
-                    <div id="name_feild" class="formInput">
-                      <select
-                        class="fullWidht chkFamilyMembers labelshow"
-                        data-id="Self"
-                        name="member_age"
-                      >
-                        <option value="" hidden=""></option>
-                        {ageOptions()}
-                        
-                      </select>
-                      <label class="feildLable">{item[0] +'-' + (index+1)} age</label>
-                    </div>
-                  </li>  })  :<li class="fieldWrapper">
-                    <div id="name_feild" class="formInput">
-                      <select
-                        class="fullWidht chkFamilyMembers labelshow"
-                        data-id="Self"
-                        name="member_age"
-                      >
-                        <option value="" hidden=""></option>
-                        {ageOptions()}
-                        
-                      </select>
-                      <label class="feildLable">{item[0]} age</label>
-                    </div>
-                  </li>
+                  {Object.entries(member).map((item) => {
+                    return item[0] == 'Son' || item[0] == 'Daughter' ? (
+                      item[1].map((sd, index) => {
+                        return (
+                          <li
+                            class="fieldWrapper"
+                            key={item[0] + '-' + (index + 1)}
+                          >
+                            <div id="name_feild" class="formInput">
+                              <select
+                                class="fullWidht chkFamilyMembers labelshow"
+                                data-id="Self"
+                                name="member_age"
+                              >
+                                <option value="" hidden=""></option>
+                                {ageOptions()}
+                              </select>
+                              <label class="feildLable">
+                                {item[0] + '-' + (index + 1)} age
+                              </label>
+                            </div>
+                          </li>
+                        );
+                      })
+                    ) : (
+                      <li key={item[0]} class="fieldWrapper">
+                        <div id="name_feild" class="formInput">
+                          <select
+                            class="fullWidht chkFamilyMembers labelshow"
+                            data-id="Self"
+                            name="member_age"
+                          >
+                            <option value="" hidden=""></option>
+                            {ageOptions()}
+                          </select>
+                          <label class="feildLable">{item[0]} age</label>
+                        </div>
+                      </li>
+                    );
                   })}
                 </ul>{' '}
                 <div class="errMemberAge"></div>
@@ -222,13 +242,19 @@ export default function Quote({ nextCallback }) {
                         <input
                           type="text"
                           id="healthCityPincode"
-                          class={`input_box healthCityPincode ui-autocomplete-input fullWidht ${city?'labelshow':''}`}
+                          class={`input_box healthCityPincode ui-autocomplete-input fullWidht ${
+                            city ? 'labelshow' : ''
+                          }`}
                           data-cityid=""
                           data-pincode="0"
                           autocomplete="off"
                           value={city}
-                          onChange={(e)=>{
-                            setCity(e.target.value)
+                          onChange={(e) => {
+                            setCity(e.target.value);
+                            sessionStorage.setItem(
+                              'city',
+                              JSON.stringify(e.target.value)
+                            );
                           }}
                         />
                         <label class="feildLable">
@@ -379,24 +405,36 @@ export default function Quote({ nextCallback }) {
                 id="step_4"
               >
                 <div class="gender-selection">
-                  {['male','female'].map((item, index)=>{
-                    return                   <div className={`form-gender gender ${basicInfo['gender'] === item ? 'selected':''}`}>
-                    <input
-                      type="radio"
-                      value={index+1}
-                      name="radio-group-gender"
-                      checked={basicInfo['gender'] === item }
-                      class="radio-group-gender"
-                      id={item}
-                      onClick={()=>{
-                        basicInfo['gender'] = item;
-                        setbasicInfo({...basicInfo})
-                      }}
-                    />
-                    <label for={item}>
-                      <span class={item}></span>{item}
-                    </label>
-                  </div>
+                  {['male', 'female'].map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`form-gender gender ${
+                          basicInfo['gender'] === item ? 'selected' : ''
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          value={index + 1}
+                          name="radio-group-gender"
+                          checked={basicInfo['gender'] === item}
+                          class="radio-group-gender"
+                          id={item}
+                          onClick={() => {
+                            basicInfo['gender'] = item;
+                            setbasicInfo({ ...basicInfo });
+                            sessionStorage.setItem(
+                              'basicinfo',
+                              JSON.stringify(basicInfo)
+                            );
+                          }}
+                        />
+                        <label for={item}>
+                          <span class={item}></span>
+                          {item}
+                        </label>
+                      </div>
+                    );
                   })}
                 </div>
                 <ul class="member-info">
@@ -404,12 +442,18 @@ export default function Quote({ nextCallback }) {
                     <div id="name_feild" class="formInput">
                       <input
                         type="text"
-                        className={`fullWidht txtName ${basicInfo['name'] ?"labelshow":''}`}
+                        className={`fullWidht txtName ${
+                          basicInfo['name'] ? 'labelshow' : ''
+                        }`}
                         maxlength="90"
                         value={basicInfo['name']}
-                        onChange={(e)=>{
+                        onChange={(e) => {
                           basicInfo['name'] = e.target.value;
-                          setbasicInfo({...basicInfo})
+                          setbasicInfo({ ...basicInfo });
+                          sessionStorage.setItem(
+                            'basicinfo',
+                            JSON.stringify(basicInfo)
+                          );
                         }}
                       />
 
@@ -1186,11 +1230,17 @@ export default function Quote({ nextCallback }) {
                         maxlength="10"
                         data-country-std-code="91"
                         pattern="[0-9]*"
-                        className={`fullWidht txtName ${basicInfo['mobile'] ?"labelshow":''}`}
+                        className={`fullWidht txtName ${
+                          basicInfo['mobile'] ? 'labelshow' : ''
+                        }`}
                         value={basicInfo['mobile']}
-                        onChange={(e)=>{
+                        onChange={(e) => {
                           basicInfo['mobile'] = e.target.value;
-                          setbasicInfo({...basicInfo})
+                          setbasicInfo({ ...basicInfo });
+                          sessionStorage.setItem(
+                            'basicinfo',
+                            JSON.stringify(basicInfo)
+                          );
                         }}
                         inputmode="numeric"
                       />
@@ -1307,7 +1357,8 @@ export default function Quote({ nextCallback }) {
                 entering a valid number
               </div>
               <div class="image">
-                <img alt=''
+                <img
+                  alt=""
                   src="https://static.pbcdn.in/cdn/images/bu/health/valid-mobile-number-popup.png"
                   width="92"
                   height="86"
@@ -1347,7 +1398,7 @@ export default function Quote({ nextCallback }) {
             <div class="small">How many {option} do you have?</div>
             {[1, 2, 3, 4].map((item) => {
               return (
-                <label>
+                <label key={item}>
                   <input
                     type="radio"
                     onClick={() => {

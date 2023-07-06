@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 
 const Proposal = dynamic(() => import('proposal/Proposal'), {
   ssr: false,
@@ -12,9 +12,9 @@ export default function Index() {
         nextCallback={() => {
           Router.push(
             {
-              pathname: '/purchase/underwriting',
+              pathname: '/purchase/payment',
             },
-            '/purchase/underwriting'
+            '/purchase/payment'
           );
         }}
       ></Proposal>

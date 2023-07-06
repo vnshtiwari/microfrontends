@@ -1,22 +1,22 @@
-import Slider from 'react-slick'
-import '../styles/OurPurpose.css'
-import 'slick-carousel/slick/slick.css'
-import girlComputer from '../assets/girlWithComputer.jpg'
-import { useNavigate } from 'react-router-dom'
+import Slider from 'react-slick';
+import '../styles/OurPurpose.css';
+import 'slick-carousel/slick/slick.css';
+import girlComputer from '../assets/girlWithComputer.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const PreviousBtn = (props) => {
-  console.log(props)
-  const { className, onClick } = props
+  console.log(props);
+  const { className, onClick } = props;
   return (
     <div
       style={{ position: 'absolute', left: 10 }}
       className={className}
       onClick={onClick}
     ></div>
-  )
-}
+  );
+};
 const NextBtn = (props) => {
-  const { className, onClick } = props
+  const { className, onClick } = props;
   return (
     <div
       style={{ position: 'absolute', right: 10 }}
@@ -25,8 +25,8 @@ const NextBtn = (props) => {
     >
       {'&#x2190;'}
     </div>
-  )
-}
+  );
+};
 
 const OurPurpose = () => {
   return (
@@ -68,11 +68,11 @@ const OurPurpose = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Card = ({ img, title, desc }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="cardContainer">
       <img src={img} className={'cardImage'} />
@@ -81,7 +81,7 @@ const Card = ({ img, title, desc }) => {
         <p className="cardDesc">{desc}</p>
         <button
           onClick={() => {
-            navigate('/home/PurposeDetail')
+            navigate('/home/PurposeDetail');
           }}
           className="redButton"
         >
@@ -89,6 +89,6 @@ const Card = ({ img, title, desc }) => {
         </button>
       </div>
     </div>
-  )
-}
-export default OurPurpose
+  );
+};
+export default OurPurpose;

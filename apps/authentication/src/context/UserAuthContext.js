@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from 'react';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -8,12 +8,12 @@ import {
   signInWithPopup,
   RecaptchaVerifier,
   signInWithPhoneNumber,
-} from "firebase/auth";
-import { auth } from "../firebase";
+} from 'firebase/auth';
+import { auth } from '../firebase';
 
 const userAuthContext = createContext();
 
-export  function UserAuthContextProvider({ children }) {
+export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState({});
 
   function logIn(email, password) {
@@ -32,7 +32,7 @@ export  function UserAuthContextProvider({ children }) {
 
   function setUpRecaptha(number) {
     const recaptchaVerifier = new RecaptchaVerifier(
-      "recaptcha-container",
+      'recaptcha-container',
       {},
       auth
     );
@@ -42,7 +42,7 @@ export  function UserAuthContextProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log("Auth", currentuser);
+      console.log('Auth', currentuser);
       setUser(currentuser);
     });
 

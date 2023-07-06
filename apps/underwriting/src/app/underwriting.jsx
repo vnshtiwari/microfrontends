@@ -1,17 +1,23 @@
-import {  useEffect, useState } from "react";
-import * as React from "react"
-import Button from "@mui/material/Button";
-import {  marks } from "../constants";
-import "./home.css";
-import Slider from "@mui/material/Slider";
-import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select  from "@mui/material/Select";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import './home.css';
 
-export default function InsuranceQuestionnair() {
+import * as React from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
+
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import Slider from '@mui/material/Slider';
+import TextField from '@mui/material/TextField';
+
+import { marks } from '../constants';
+
+export default function InsuranceQuestionnair({nextCallback}) {
   //const navigate = useNavigate();
 
   const [step, setStep] = useState(0);
@@ -102,6 +108,8 @@ export default function InsuranceQuestionnair() {
         )
           .then((res) => res.json())
           .then((data) => {
+            nextCallback()
+
             //setLoader(false);
             //setPolicyStatus(data.statusId);
             //gtag("event", "underwriting_done");

@@ -8,7 +8,8 @@ const Plan = dynamic(() => import('plans/Plan'), {
 export default function Index() {
   return (
     <>
-      <Plan nextCallback={() => {
+      <Plan
+        nextCallback={() => {
           Router.push(
             {
               pathname: '/health/proposal',

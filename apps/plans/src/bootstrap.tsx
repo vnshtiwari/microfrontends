@@ -8,11 +8,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-    <App 
-    // setSelectedPlan={() => {return;}} 
-    nextCallback={()=> {return;}} 
-    // planList={[]} 
-    // handleChange={()=> {return ;}} state={{}} 
+    <App
+      // setSelectedPlan={() => {return;}}
+      nextCallback={() => {
+        return;
+      }}
+      // planList={[]}
+      // handleChange={()=> {return ;}} state={{}}
     />
   </StrictMode>
 );

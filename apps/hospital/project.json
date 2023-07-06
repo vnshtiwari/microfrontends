@@ -50,7 +50,7 @@
       "options": {
         "buildTarget": "hospital:build",
         "hmr": true,
-        "port":4801
+        "port": 4801
       },
       "configurations": {
         "development": {

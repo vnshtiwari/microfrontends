@@ -1,23 +1,19 @@
-import { useState, useEffect } from "react";
-import React from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
-import style from "./basic-info.module.css";
-import { Grid, Typography } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import TextareaAutosize from "@mui/base/TextareaAutosize";
+import { useState, useEffect } from 'react';
+import React from 'react';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+import style from './basic-info.module.css';
+import { Grid, Typography } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 
-export default function Proposal({
-  insParty,
-  basicData,
-  nextCallback
-}) {
+export default function Proposal({ insParty, basicData, nextCallback }) {
   let [errorMsg, setErrorMsg] = useState(null);
 
-  const [insPartyDetails,setInsPartyDetails] = useState([])
+  const [insPartyDetails, setInsPartyDetails] = useState([]);
 
   function validate() {
     let parties = Object.entries(insParty)
@@ -27,9 +23,9 @@ export default function Proposal({
     for (let i = 0; i < parties.length; i++) {
       let check =
         insPartyDetails[parties[i]] &&
-        insPartyDetails[parties[i]]["firstName"] &&
-        insPartyDetails[parties[i]]["lastName"] &&
-        insPartyDetails[parties[i]]["dob"];
+        insPartyDetails[parties[i]]['firstName'] &&
+        insPartyDetails[parties[i]]['lastName'] &&
+        insPartyDetails[parties[i]]['dob'];
       if (!check) {
         return false;
       }
@@ -38,11 +34,11 @@ export default function Proposal({
   }
 
   useEffect(() => {
-    insPartyDetails["Self"] = {};
-    insPartyDetails["Self"].firstName = basicData["firstName"];
-    insPartyDetails["Self"].lastName = basicData["lastName"];
-    insPartyDetails["Self"].dob = basicData["dob"];
-    insPartyDetails["Self"].address = basicData["address"];
+    insPartyDetails['Self'] = {};
+    insPartyDetails['Self'].firstName = basicData['firstName'];
+    insPartyDetails['Self'].lastName = basicData['lastName'];
+    insPartyDetails['Self'].dob = basicData['dob'];
+    insPartyDetails['Self'].address = basicData['address'];
   }, []);
 
   async function next() {
@@ -51,31 +47,31 @@ export default function Proposal({
       return;
     }
     let insPartyArray = Object.entries(insPartyDetails).map((item) => {
-      item[1]["relationship"] = item[0];
+      item[1]['relationship'] = item[0];
       return item[1];
     });
 
     let data = {
-      customerId: sessionStorage.getItem("customerId"),
-      quoteId: sessionStorage.getItem("quoteId"),
-      mobile: "",
-      firstName: basicData["firstName"],
-      lastName: basicData["lastName"],
-      email: insPartyDetails["Self"].email,
-      dob: basicData["lastName"],
-      gender: "male",
+      customerId: sessionStorage.getItem('customerId'),
+      quoteId: sessionStorage.getItem('quoteId'),
+      mobile: '',
+      firstName: basicData['firstName'],
+      lastName: basicData['lastName'],
+      email: insPartyDetails['Self'].email,
+      dob: basicData['lastName'],
+      gender: 'male',
       insurableParty: insPartyArray,
     };
 
     //setLoader(true);
 
     const rawResponse = await fetch(
-      "https://sahi-backend-dnhiaxv6nq-el.a.run.app/api/v1/sahi/proposal/create",
+      'https://sahi-backend-dnhiaxv6nq-el.a.run.app/api/v1/sahi/proposal/create',
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       }
@@ -84,8 +80,8 @@ export default function Proposal({
     //setLoader(false);
 
     console.log(content.proposalId);
-    sessionStorage.setItem("proposalId", content.proposalId);
-    nextCallback()
+    sessionStorage.setItem('proposalId', content.proposalId);
+    nextCallback();
   }
   return (
     <section class="chat-container">
@@ -101,9 +97,9 @@ export default function Proposal({
                   fullWidth
                   label="Proposer First Name"
                   variant="outlined"
-                  value={insPartyDetails["Self"]?.firstName}
+                  value={insPartyDetails['Self']?.firstName}
                   onChange={(e) => {
-                    insPartyDetails["Self"]["firstName"] = e.target.value;
+                    insPartyDetails['Self']['firstName'] = e.target.value;
                     setInsPartyDetails({ ...insPartyDetails });
                   }}
                   spellCheck={false}
@@ -118,9 +114,9 @@ export default function Proposal({
                   fullWidth
                   label="Proposer Last Name"
                   variant="outlined"
-                  value={insPartyDetails["Self"]?.lastName}
+                  value={insPartyDetails['Self']?.lastName}
                   onChange={(e) => {
-                    insPartyDetails["Self"]["lastName"] = e.target.value;
+                    insPartyDetails['Self']['lastName'] = e.target.value;
                     setInsPartyDetails({ ...insPartyDetails });
                   }}
                   spellCheck={false}
@@ -135,9 +131,9 @@ export default function Proposal({
                   fullWidth
                   label="Proposer Email"
                   variant="outlined"
-                  value={insPartyDetails["Self"]?.email}
+                  value={insPartyDetails['Self']?.email}
                   onChange={(e) => {
-                    insPartyDetails["Self"]["email"] = e.target.value;
+                    insPartyDetails['Self']['email'] = e.target.value;
                     setInsPartyDetails({ ...insPartyDetails });
                   }}
                   spellCheck={false}
@@ -151,16 +147,16 @@ export default function Proposal({
                   <DatePicker
                     className="fullwidth"
                     label="Proposer Date of Birth"
-                    value={insPartyDetails["Self"]?.dob}
+                    value={insPartyDetails['Self']?.dob}
                     onChange={(newValue) => {
-                      insPartyDetails["Self"]["dob"] = newValue;
+                      insPartyDetails['Self']['dob'] = newValue;
                       setInsPartyDetails({ ...insPartyDetails });
                     }}
                     renderInput={(params) => (
                       <TextField
                         {...params}
                         fullWidth
-                        value={insPartyDetails["Self"]?.dob}
+                        value={insPartyDetails['Self']?.dob}
                         required
                       />
                     )}
@@ -171,7 +167,7 @@ export default function Proposal({
                 <TextareaAutosize
                   maxRows={4}
                   fullWidth
-                  value={insPartyDetails["Self"]?.address}
+                  value={insPartyDetails['Self']?.address}
                   aria-label="maximum height"
                   placeholder="Proposer Address"
                   defaultValue=""
@@ -201,7 +197,7 @@ export default function Proposal({
                               onChange={(e) => {
                                 if (!insPartyDetails[item[0]])
                                   insPartyDetails[item[0]] = {};
-                                insPartyDetails[item[0]]["firstName"] =
+                                insPartyDetails[item[0]]['firstName'] =
                                   e.target.value;
                                 setInsPartyDetails({ ...insPartyDetails });
                               }}
@@ -217,7 +213,7 @@ export default function Proposal({
                               onChange={(e) => {
                                 if (!insPartyDetails[item[0]])
                                   insPartyDetails[item[0]] = {};
-                                insPartyDetails[item[0]]["lastName"] =
+                                insPartyDetails[item[0]]['lastName'] =
                                   e.target.value;
                                 setInsPartyDetails({ ...insPartyDetails });
                               }}
@@ -240,16 +236,16 @@ export default function Proposal({
                                 label="Date of Birth"
                                 inputFormat="MM/dd/yyyy"
                                 value={
-                                  insPartyDetails[item[0]]?.["dob"] || null
+                                  insPartyDetails[item[0]]?.['dob'] || null
                                 }
                                 onChange={(newValue) => {
                                   if (!insPartyDetails[item[0]])
                                     insPartyDetails[item[0]] = {};
-                                  insPartyDetails[item[0]]["dob"] = newValue;
+                                  insPartyDetails[item[0]]['dob'] = newValue;
                                   setInsPartyDetails({ ...insPartyDetails });
                                 }}
                                 inputProps={{
-                                  autocomplete: "off",
+                                  autocomplete: 'off',
                                 }}
                                 renderInput={(params) => (
                                   <TextField {...params} fullWidth required />
@@ -263,7 +259,7 @@ export default function Proposal({
                 </Grid>
                 <Typography
                   variant="caption"
-                  sx={{ display: errorMsg ? "block" : "none", color: "red" }}
+                  sx={{ display: errorMsg ? 'block' : 'none', color: 'red' }}
                   display="block"
                   gutterBottom
                 >

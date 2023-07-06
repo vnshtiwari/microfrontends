@@ -2,6 +2,7 @@ const { composePlugins, withNx } = require('@nrwl/webpack');
 const { withReact } = require('@nrwl/react');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 const deps = require('../../package.json').dependencies;
+const path = require('path');
 
 // Nx plugins for webpack.
 module.exports = composePlugins(withNx(), withReact(), (config) => {
@@ -12,7 +13,8 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
 config.output =  {
   uniqueName: "proposal",
   publicPath: "auto",
-  scriptType: 'text/javascript'
+  scriptType: 'text/javascript',
+  path:path.join(__dirname, "../../dist/apps/proposal")
 }
 
     config.plugins.push(new ModuleFederationPlugin({

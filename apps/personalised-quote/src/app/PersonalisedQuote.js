@@ -1,46 +1,40 @@
-import { React,  useState } from "react";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import { React, useState } from 'react';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import Typography from "@mui/material/Typography";
-import ListItemButton from "@mui/material/ListItemButton";
-import "./home.css";
-import "./plans.module.css";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import Typography from '@mui/material/Typography';
+import ListItemButton from '@mui/material/ListItemButton';
+import './home.css';
+import './plans.module.css';
 
-export default function PersonalisedQuote({
-  selectedPlan,
-  nextCallback,
-}) {
-  let [amount , setAmount]  =useState(0)
+export default function PersonalisedQuote({ selectedPlan, nextCallback }) {
+  let [amount, setAmount] = useState(0);
 
   let [selectedAddsOns, setSelectedAddsOns] = useState([]);
   function buyNow() {
-    nextCallback()
+    nextCallback();
   }
 
   function selectAddsOns(item) {
-    debugger
+    debugger;
     if (!selectedAddsOns.includes(item.name)) {
       selectedAddsOns.push(item.name);
       setSelectedAddsOns([...selectedAddsOns]);
       setAmount(amount + item.amount);
     } else {
       selectedAddsOns.splice(selectedAddsOns.indexOf(item.name), 1);
-        setSelectedAddsOns([...selectedAddsOns]);
+      setSelectedAddsOns([...selectedAddsOns]);
       setAmount(amount - item.amount);
     }
   }
-
-
-
 
   return (
     <section className="plan-container">
@@ -141,7 +135,7 @@ export default function PersonalisedQuote({
                 AddOns
               </Typography>
               <Typography color="text.secondary" component="div">
-                {selectedAddsOns.join(", ")}
+                {selectedAddsOns.join(', ')}
               </Typography>
             </div>
 
@@ -150,7 +144,7 @@ export default function PersonalisedQuote({
                 Net premium
               </Typography>
               <Typography color="text.secondary" component="div">
-                {"₹ " + (amount * 82) / 100}
+                {'₹ ' + (amount * 82) / 100}
               </Typography>
             </div>
 
@@ -159,7 +153,7 @@ export default function PersonalisedQuote({
                 GST (18%)
               </Typography>
               <Typography color="text.secondary" component="div">
-                {"₹ " + (amount * 18) / 100}
+                {'₹ ' + (amount * 18) / 100}
               </Typography>
             </div>
 
@@ -168,7 +162,7 @@ export default function PersonalisedQuote({
                 Total Premium
               </Typography>
               <Typography color="text.secondary" component="div">
-                {"₹ " + amount}
+                {'₹ ' + amount}
               </Typography>
             </div>
           </Grid>
@@ -181,13 +175,13 @@ export default function PersonalisedQuote({
         <AppBar
           position="fixed"
           sx={{
-            top: "auto",
+            top: 'auto',
             bottom: 0,
-            color: "black",
-            backgroundColor: "white",
+            color: 'black',
+            backgroundColor: 'white',
           }}
         >
-          <Toolbar style={{ "text-align": "right" }}>
+          <Toolbar style={{ 'text-align': 'right' }}>
             <div className="action-bar">
               <span className="premium">
                 <div className="premium-label">Total premium</div>
@@ -196,7 +190,7 @@ export default function PersonalisedQuote({
               <Button
                 onClick={buyNow}
                 color="error"
-                sx={{ borderRadius: "20px" }}
+                sx={{ borderRadius: '20px' }}
                 size="large"
                 variant="contained"
               >
