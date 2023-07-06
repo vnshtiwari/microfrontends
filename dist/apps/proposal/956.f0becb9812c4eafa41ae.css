@@ -1,0 +1,40 @@
+.basic-info_fullwidth__a4GIu{
+    width: 100%;
+}
+
+.basic-info_contactFormContainer__mn6w9{
+    width: 350px;
+}
+
+.basic-info_genderList__\+ItYu{
+    display: flex;
+    justify-content: space-around;
+}
+
+.basic-info_genderList__\+ItYu svg{
+    width:40px;
+    height: 40px;
+}
+
+.basic-info_genderList__\+ItYu p{
+    font-size: 14px;
+    text-align: center;
+}
+
+.basic-info_genderList__\+ItYu div{
+    cursor: pointer;
+}
+
+.basic-info_active__E5TZC{
+    color:#ed1b2e;
+}
+
+.basic-info_basicDetailContainer__HMoWc{
+    width: 350px;
+}
+
+@media screen and  (max-width : 370px) {
+    .basic-info_contactFormContainer__mn6w9, .basic-info_basicDetailContainer__HMoWc{
+        width: 100%;
+    }
+}

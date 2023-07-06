@@ -3,6 +3,7 @@ const { withReact } = require('@nrwl/react');
 const ModuleFederationPlugin =
   require('webpack').container.ModuleFederationPlugin;
 const deps = require('../../package.json').dependencies;
+var path = require('path');
 const { merge } = require('webpack-merge');
 const path = require('path');
 

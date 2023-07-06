@@ -1,0 +1,161 @@
+ul.no-bullets {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+.horizental-align {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mt-30{
+     margin-top: 30px;
+}
+
+.mt-50{
+    margin-top: 50px;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.active {
+    color: #fe6625;
+    z-index: 1;
+    background-color: #fff5ed;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+    line-height: 1.5;
+    -moz-tab-size: 4;
+      -o-tab-size: 4;
+         tab-size: 4;
+    scroll-behavior: smooth;
+  }
+
+.btn-orange {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    color: #fff;
+    padding: .75rem 1.75rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: #ec6608;
+    border-radius: 30rem;
+    text-decoration: none;
+    border: none;
+}
+
+
+  
+.product_mainContainer__l3jKg {
+    background-color: #ed1b2e;
+    color: white;
+    padding: 30px;
+
+}
+
+.product_prodcutHeading__FG\+BQ {
+    width: 70%;
+}
+
+.product_prodcutHeading__FG\+BQ li {
+    padding: 10px;
+}
+
+.product_prodcutHeading__FG\+BQ h1 {
+}
+
+.product_planBenifits__GnP8J {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product_productBody__juFx7 {
+    width: 70%;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+
+}
+
+.product_productBody__juFx7 li {
+    padding: 15px;
+    border-right:  solid 1px #eaeaea;
+    cursor: pointer;
+}
+
+.product_productBody__juFx7 li:last-child {
+    border-right:  0px
+}
+
+.product_productBody__juFx7 li p {
+color: grey;
+}
+
+.product_fullwidth__wGBoS{
+    width: 100%;
+}
+
+.product_contactFormContainer__ueE\+O{
+    width: 350px;
+}
+
+.product_genderList__n2p4x{
+    display: flex;
+    justify-content: space-around;
+}
+
+.product_genderList__n2p4x svg{
+    width:40px;
+    height: 40px;
+}
+
+.product_genderList__n2p4x p{
+    font-size: 14px;
+    text-align: center;
+}
+
+.product_genderList__n2p4x div{
+    cursor: pointer;
+}
+
+.product_active__\+N6-p{
+    color:#ed1b2e;
+}
+
+.product_basicDetailContainer__3K1Mt{
+    width: 350px;
+}
+
+.product_quoteForm__Uk5bE{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product_inputContainer__OIqSf {
+    width: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+@media screen and  (max-width : 370px) {
+    .product_contactFormContainer__ueE\+O, .product_basicDetailContainer__3K1Mt{
+        width: 100%;
+    }
+}
